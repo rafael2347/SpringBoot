@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="modelo.EntidadDepartamento">
+        <table name="departamento" schema="proyecto_orm" catalog=""/>
+        <attributes>
+            <id name="idDepto">
+                <column name="id_depto" precision="-1"/>
+            </id>
+            <basic name="nomDepto">
+                <column name="nom_depto" nullable="false"/>
+            </basic>
+            <many-to-one name="sedeByIdSede" optional="true" target-entity="modelo.EntidadSede">
+                <join-column name="id_sede" referenced-column-name="id_sede"/>
+            </many-to-one>
+            <one-to-many name="empleadosByIdDepto" mapped-by="departamentoByIdDepto"
+                         target-entity="modelo.EntidadEmpleado"/>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="modelo.EntidadSede">
+        <table name="sede" schema="proyecto_orm" catalog=""/>
+        <attributes>
+            <id name="idSede">
+                <column name="id_sede" precision="-1"/>
+            </id>
+            <basic name="nomSede">
+                <column name="nom_sede" length="20"/>
+            </basic>
+            <one-to-many name="departamentosByIdSede" mapped-by="sedeByIdSede"
+                         target-entity="modelo.EntidadDepartamento"/>
+        </attributes>
+    </entity>
+</entity-mappings>
